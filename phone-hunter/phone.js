@@ -63,6 +63,18 @@ const showPhoneDetails = (phone) =>{
     const showDetailContainer = document.getElementById('show-detail-container');
     showDetailContainer.innerHTML = `
         <img src="${phone.image}" alt="">
+        <h3 class="font-bold text-lg">${phone.name}</h3>
+        <p class="py-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <p><strong>Display Size</strong>: ${phone.mainFeatures.displaySize}</P>
+        <p><strong>Chipset</strong>: ${phone.mainFeatures.chipSet}</P>
+        <p><strong>Display</strong>: ${phone.mainFeatures.memory}</P>
+
+        <div class="modal-action">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+        </form>
+        </div>
     `
 }
 
