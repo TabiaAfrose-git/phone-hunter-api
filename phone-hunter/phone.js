@@ -1,6 +1,6 @@
 const phoneContainer = document.getElementById('phone-container');
 //data loda kor hoiche
-const loadPhone = async (searchText,isShowAll) =>{
+const loadPhone = async (searchText='13',isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -37,8 +37,9 @@ const displayPhones = (phones,isShowAll) =>{
         <div class="card-body">
           <h2 class="card-title">${phone.phone_name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+          <div class="card-actions justify-center">
+            <button onclick="handelShowDeTail('${phone.slug}');
+            modal.showModal()"  class="btn btn-primary text-white">Show Details</button>
           </div>
         </div>
         `
@@ -47,6 +48,24 @@ const displayPhones = (phones,isShowAll) =>{
     //hidden toggleSpinner
     toggleLoadingSpinner(false);
 }
+// show details
+const handelShowDeTail = async(id) => {
+    // load single data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    const phone = data.data;
+
+    showPhoneDetails(phone);
+}
+const showPhoneDetails = (phone) =>{
+    console.log(phone);
+    modal.showModal();
+    const showDetailContainer = document.getElementById('show-detail-container');
+    showDetailContainer.innerHTML = `
+        <img src="${phone.image}" alt="">
+    `
+}
+
 // search kora hoiche
 const handelSearch = (isShowAll) => {
     toggleLoadingSpinner(true);
@@ -67,3 +86,4 @@ const toggleLoadingSpinner = (isLoading) =>{
 const handelShowAll = (isShowAll) => {
     handelSearch(true);
 }
+loadPhone();
