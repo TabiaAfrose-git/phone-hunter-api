@@ -5,8 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API-Project-1</title>
+    <!-- DaziUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
+    <header>
+        <h1>Hunting phone!</h1>
+    </header>
+    <main class="container mx-auto mt-8">
+        <section class="bg-gray-100 p-4 m-4 rounded-md">
+            <input id="search-field" type="text" placeholder="search..." class="input w-full max-w-xs" />
+            <button onclick="handelSearch()" class="btn">Button</button>
+        </section>
+        <section>
+            <!-- loding -->
+            <div id="loading-spinner" class="text-center my-40 hidden"><span class="loading loading-spinner loading-md"></span></div>
+            <!-- show card -->
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"> </div>
+            <!-- show all button -->
+            <div id="show-all-container" class="hidden text-center">
+                <button onclick="handelShowAll()" class="btn btn-accent">Show All</button>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="phone.js"></script>
 </body>
 </html>
